@@ -4,18 +4,32 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Jonathan Cade"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2020-01-14 02:31:51 PM"/>
+        <attribute name="saved" value="2020-01-14 03:36:40 PM"/>
         <attribute name="created" value="Sm9uYXRoYW4gQ2FkZTtMQVBUT1AtR0ZMNUZQRVU7MjAyMC0wMS0xNDswMTowOTo1OCBQTTszNTc2"/>
-        <attribute name="edited" value="Sm9uYXRoYW4gQ2FkZTtMQVBUT1AtR0ZMNUZQRVU7MjAyMC0wMS0xNDswMjozMTo1MSBQTTsyOzM2NzQ="/>
+        <attribute name="edited" value="Sm9uYXRoYW4gQ2FkZTtMQVBUT1AtR0ZMNUZQRVU7MjAyMC0wMS0xNDswMzozNjo0MCBQTTs0OzM2ODA="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
-            <output expression="&quot;Please enter a temperature in degrees celsius.&quot;" newline="True"/>
-            <declare name="degreesCelsius" type="Real" array="False" size=""/>
-            <input variable="degreesCelsius"/>
-            <output expression="&quot;Temperature in degrees fahrenheit = &quot;" newline="False"/>
-            <output expression="convertC2F (degreesCelsius)" newline="True"/>
+            <declare name="repeat" type="Boolean" array="False" size=""/>
+            <assign variable="repeat" expression="true"/>
+            <while expression="repeat">
+                <output expression="&quot;Please enter a temperature in degrees celsius.(Just press ENTER to quit.)&quot;" newline="True"/>
+                <declare name="userInput" type="String" array="False" size=""/>
+                <declare name="degreesCelsius" type="Real" array="False" size=""/>
+                <input variable="userInput"/>
+                <if expression="Len(userInput) &gt; 0">
+                    <then>
+                        <assign variable="degreesCelsius" expression="ToReal (userInput)"/>
+                        <output expression="&quot;Temperature in degrees fahrenheit = &quot;" newline="False"/>
+                        <output expression="convertC2F (degreesCelsius)" newline="True"/>
+                    </then>
+                    <else>
+                        <assign variable="repeat" expression="false"/>
+                    </else>
+                </if>
+            </while>
+            <output expression="&quot;Goodbye&quot;" newline="True"/>
         </body>
     </function>
     <function name="convertC2F" type="Real" variable="degreesFahrenheit">
